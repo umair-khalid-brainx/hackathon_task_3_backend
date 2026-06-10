@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus Mode — Settings</title>
+    <link rel="stylesheet" href="../styles/theme.css" />
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="options">
+      <header class="options__header">
+        <div class="options__badge">Focus Mode</div>
+        <h1>Settings</h1>
+        <p class="options__intro">
+          Configure automatic schedules and whitelist trusted sites that should keep notification access
+          while Focus Mode is on.
+        </p>
+      </header>
+
+      <aside class="premium-banner">
+        <div class="premium-banner__content">
+          <span class="premium-banner__label">Focus Mode Premium</span>
+          <h2 class="premium-banner__title">Go further with a one-time upgrade</h2>
+          <p class="premium-banner__copy">
+            Pay once, keep it forever. Unlock deeper control for the way you work — no subscriptions,
+            no renewals, just more room to focus on your terms.
+          </p>
+          <ul class="premium-banner__perks">
+            <li><strong>20 scheduler slots</strong> instead of 3</li>
+            <li><strong>100 whitelist domains</strong> instead of 20</li>
+          </ul>
+        </div>
+        <button type="button" class="button button--premium" id="premium-upgrade-btn" disabled>
+          Unlock Premium
+        </button>
+      </aside>
+
+      <section class="settings-section">
+        <div class="section-heading section-heading--with-tip">
+          <div>
+            <h2>Notification whitelist</h2>
+            <p>Add up to 20 domains that Focus Mode should not block.</p>
+          </div>
+          <div class="premium-tip">
+            <button
+              type="button"
+              class="premium-tip__trigger"
+              aria-describedby="whitelist-premium-tooltip"
+              aria-label="Premium whitelist upgrade details"
+            >
+              <span class="premium-tip__icon" aria-hidden="true">✦</span>
+              Need more?
+            </button>
+            <div id="whitelist-premium-tooltip" class="premium-tip__popover" role="tooltip">
+              <p class="premium-tip__title">Whitelist without limits holding you back</p>
+              <p>
+                You’re on the free plan with <strong>20 domains</strong>. Upgrade once to Premium and
+                protect up to <strong>100 trusted sites</strong> — perfect for teams, clients, and
+                every app you rely on.
+              </p>
+              <p class="premium-tip__footnote">One-time purchase · Yours forever</p>
+            </div>
+          </div>
+        </div>
+
+        <form id="whitelist-form" class="whitelist-form">
+          <label class="text-field" for="whitelist-input">
+            <span>Domain or URL</span>
+            <input
+              id="whitelist-input"
+              type="text"
+              placeholder="e.g. slack.com or https://mail.google.com"
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </label>
+          <button type="submit" class="button button--secondary">Add domain</button>
+        </form>
+
+        <p id="whitelist-status" class="inline-status" aria-live="polite"></p>
+
+        <div class="whitelist-meta">
+          <span id="whitelist-count">0 / 20 domains</span>
+          <div class="premium-tip premium-tip--compact">
+            <button
+              type="button"
+              class="premium-tip__trigger premium-tip__trigger--compact"
+              aria-describedby="whitelist-limit-tooltip"
+              aria-label="Premium whitelist limit details"
+            >
+              Free plan limit
+            </button>
+            <div id="whitelist-limit-tooltip" class="premium-tip__popover premium-tip__popover--compact" role="tooltip">
+              Hit your cap? Premium lifts you to <strong>100 domains</strong> with a single one-time upgrade.
+            </div>
+          </div>
+        </div>
+
+        <ul id="whitelist-list" class="whitelist-list"></ul>
+        <p id="whitelist-empty" class="empty-state">No whitelisted domains yet.</p>
+      </section>
+
+      <section class="settings-section">
+        <div class="section-heading section-heading--with-tip">
+          <div>
+            <h2>Auto schedule</h2>
+            <p>Set up to 3 daily time ranges for automatic Focus Mode sessions.</p>
+          </div>
+          <div class="premium-tip">
+            <button
+              type="button"
+              class="premium-tip__trigger"
+              aria-describedby="schedule-premium-tooltip"
+              aria-label="Premium scheduler upgrade details"
+            >
+              <span class="premium-tip__icon" aria-hidden="true">✦</span>
+              Need more?
+            </button>
+            <div id="schedule-premium-tooltip" class="premium-tip__popover" role="tooltip">
+              <p class="premium-tip__title">Automate your entire day</p>
+              <p>
+                Free includes <strong>3 schedule slots</strong>. Premium unlocks
+                <strong>20 scheduler slots</strong> — morning focus, lunch breaks, deep work blocks,
+                and wind-down routines, all on autopilot.
+              </p>
+              <p class="premium-tip__footnote">One-time purchase · No monthly fees</p>
+            </div>
+          </div>
+        </div>
+
+        <section class="schedule-note">
+          <strong>Manual sessions are protected.</strong>
+          If Focus Mode is already on when a start time hits, the schedule will not change it and
+          the matching stop time will not turn it off.
+        </section>
+
+        <form id="schedule-form" class="schedule-form">
+          <div id="schedule-list" class="schedule-list"></div>
+
+          <div class="schedule-actions">
+            <button type="submit" class="button button--primary">Save schedules</button>
+            <p id="save-status" class="save-status" aria-live="polite"></p>
+            <div class="premium-tip premium-tip--inline">
+              <button
+                type="button"
+                class="premium-tip__trigger premium-tip__trigger--link"
+                aria-describedby="schedule-limit-tooltip"
+                aria-label="Premium scheduler limit details"
+              >
+                Using all 3 slots? See Premium
+              </button>
+              <div id="schedule-limit-tooltip" class="premium-tip__popover premium-tip__popover--above" role="tooltip">
+                <p class="premium-tip__title">Your schedule, supercharged</p>
+                <p>
+                  Upgrade once for <strong>20 scheduler slots</strong> and build a focus routine that
+                  runs itself — every day, all week long.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section class="settings-section settings-section--last">
+        <div class="section-heading">
+          <h2>Distraction score</h2>
+          <p>
+            A running history of blocked notifications, ranked by how aggressively each domain tried
+            to interrupt you.
+          </p>
+        </div>
+
+        <div class="distraction-summary">
+          <div class="distraction-summary__stat">
+            <span class="distraction-summary__label">Total blocked</span>
+            <strong id="distraction-total">0</strong>
+          </div>
+          <div class="distraction-summary__stat">
+            <span class="distraction-summary__label">Tracked domains</span>
+            <strong id="distraction-domain-count">0</strong>
+          </div>
+        </div>
+
+        <ol id="distraction-list" class="distraction-list"></ol>
+        <div class="distraction-legend" id="distraction-legend" hidden>
+          <span class="distraction-legend__item distraction-legend__item--high">40%+ high</span>
+          <span class="distraction-legend__item distraction-legend__item--medium">15–39% medium</span>
+          <span class="distraction-legend__item distraction-legend__item--low">&lt;15% low</span>
+        </div>
+        <p id="distraction-empty" class="empty-state">
+          No distraction data yet. Turn on Focus Mode and blocked notifications will appear here.
+        </p>
+      </section>
+    </main>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

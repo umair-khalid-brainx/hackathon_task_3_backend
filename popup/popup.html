@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus Mode Activator</title>
+    <link rel="stylesheet" href="../styles/theme.css" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <header class="popup__header">
+        <div class="popup__badge">Focus Mode</div>
+        <h1 class="popup__title">Notification Shield</h1>
+        <p class="popup__subtitle">Block browser popups and push alerts instantly</p>
+        <p class="popup__shortcut">Shortcut: Alt+Shift+F</p>
+      </header>
+
+      <button
+        type="button"
+        id="focus-toggle"
+        class="focus-toggle"
+        aria-pressed="false"
+        aria-label="Toggle Focus Mode"
+      >
+        <span class="focus-toggle__track" aria-hidden="true">
+          <span class="focus-toggle__thumb"></span>
+        </span>
+        <span class="focus-toggle__content">
+          <span class="focus-toggle__state" id="toggle-state">OFF</span>
+          <span class="focus-toggle__hint" id="toggle-hint">Tap to block notifications</span>
+        </span>
+      </button>
+
+      <p class="status" id="status">Notifications are allowed</p>
+
+      <section id="session-summary" class="session-summary" hidden>
+        <h2 class="session-summary__title">Session summary</h2>
+        <p class="session-summary__total" id="summary-total"></p>
+        <ul class="session-summary__sites" id="summary-sites"></ul>
+      </section>
+
+      <a href="#" id="open-schedule" class="popup__link">Settings &amp; whitelist</a>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
